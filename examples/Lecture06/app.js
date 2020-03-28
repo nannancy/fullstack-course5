@@ -3,7 +3,7 @@
 
 angular.module('NameCalculator', [])
 
-.controller('NameCalculatorController', function ($scope) {
+.controller('NameCalculatorController', function ($scope) {//ng-app? ng-controller? ng-model?
   $scope.name = "";
   $scope.totalValue = 0;
 
@@ -11,7 +11,6 @@ angular.module('NameCalculator', [])
     var totalNameValue = calculateNumericForString($scope.name);
     $scope.totalValue = totalNameValue;
   };
-
 
   function calculateNumericForString(string) {
     var totalStringValue = 0;
