@@ -6,7 +6,7 @@
 
   LunchCheckController.$inject = ['$scope'];
   function LunchCheckController($scope){
-    $scope.message = "Please enter data first";
+    $scope.message = "";
     $scope.dishes = "";
 
     $scope.checkIfTooMuch = function(){
