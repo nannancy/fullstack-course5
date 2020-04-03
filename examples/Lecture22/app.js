@@ -5,7 +5,7 @@ angular.module('ShoppingListApp', [])
 .controller('ShoppingListController', ShoppingListController)
 .provider('ShoppingListService', ShoppingListServiceProvider)
 .config(Config);
-
+//'ShoppingListService'Provider, that is how injection works.
 Config.$inject = ['ShoppingListServiceProvider'];
 function Config(ShoppingListServiceProvider) {
   // Save Yaakov from himself

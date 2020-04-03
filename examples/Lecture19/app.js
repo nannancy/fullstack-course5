@@ -11,7 +11,8 @@ ParentController1.$inject = ['$scope'];
 function ParentController1($scope) {
   $scope.parentValue = 1;
   $scope.pc = this;
-  $scope.pc.parentValue = 1;
+  $scope.pc.parentValue = 2;
+  // console.log("ParentController1 $scope: ", $scope);
 }
 
 
@@ -19,19 +20,25 @@ ChildController1.$inject = ['$scope'];
 function ChildController1($scope) {
   // console.log("$scope.parentValue: ", $scope.parentValue);
   // console.log("CHILD $scope: ", $scope);
-  //
+  // //change the property of $scope-->does add an object to $scope
   // $scope.parentValue = 5;
   // console.log("*** CHANGED: $scope.parentValue = 5 ***");
   // console.log("$scope.parentValue: ", $scope.parentValue);
   // console.log($scope);
-  //
+  // //change parent $scope.parentValue through $scope.pc.parentValue
+  // console.log("*** UNCHANGED: $scope.pc.parentValue = 2 ***");
   // console.log("$scope.pc.parentValue: ", $scope.pc.parentValue);
-  // $scope.pc.parentValue = 5;
-  // console.log("** CHANGED: $scope.pc.parentValue = 5; ***");
+  // //change the property of an object of $scope.$parent--> does not add an object to $scope
+  // $scope.pc.parentValue = 6;
+  // console.log("** CHANGED: $scope.pc.parentValue = 6; ***");
   // console.log("$scope.pc.parentValue: ", $scope.pc.parentValue);
+  // console.log("** $scope.$id = 3; ***");
   // console.log("$scope: ", $scope);
   //
-  // console.log("$scope.$parent.parentValue: ", $scope.$parent.parentValue);
+  // console.log("** CHANGED: $scope.$parent.pc.parentValue = 6; ***");
+  // console.log("$scope.$parent.pc.parentValue: ", $scope.$parent.pc.parentValue);
+  //
+  // console.log($scope);
 }
 
 // ** Controller As syntax

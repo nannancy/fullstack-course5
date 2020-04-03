@@ -53,32 +53,14 @@ function ShoppingListService($q, WeightLossFilterService) {
   // };
 
 
-  // service.addItem = function (name, quantity) {
-  //   var promise = WeightLossFilterService.checkName(name);
-  //
-  //   promise
-  //   .then(function (response) {
-  //     return WeightLossFilterService.checkQuantity(quantity);
-  //   })
-  //   .then(function (response) {
-  //     var item = {
-  //       name: name,
-  //       quantity: quantity
-  //     };
-  //     items.push(item);
-  //   })
-  //   .catch(function (errorResponse) {
-  //     console.log(errorResponse.message);
-  //   });
-  // };
-
-
   service.addItem = function (name, quantity) {
-    var namePromise = WeightLossFilterService.checkName(name);
-    var quantityPromise = WeightLossFilterService.checkQuantity(quantity);
+    var promise = WeightLossFilterService.checkName(name);
 
-    $q.all([namePromise, quantityPromise]).
-    then(function (response) {
+    promise
+    .then(function (response) {
+      return WeightLossFilterService.checkQuantity(quantity);
+    })
+    .then(function (response) {
       var item = {
         name: name,
         quantity: quantity
@@ -89,6 +71,24 @@ function ShoppingListService($q, WeightLossFilterService) {
       console.log(errorResponse.message);
     });
   };
+
+
+  // service.addItem = function (name, quantity) {
+  //   var namePromise = WeightLossFilterService.checkName(name);
+  //   var quantityPromise = WeightLossFilterService.checkQuantity(quantity);
+  //
+  //   $q.all([namePromise, quantityPromise]).
+  //   then(function (response) {
+  //     var item = {
+  //       name: name,
+  //       quantity: quantity
+  //     };
+  //     items.push(item);
+  //   })
+  //   .catch(function (errorResponse) {
+  //     console.log(errorResponse.message);
+  //   });
+  // };
 
   service.removeItem = function (itemIndex) {
     items.splice(itemIndex, 1);

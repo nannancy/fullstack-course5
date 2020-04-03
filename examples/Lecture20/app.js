@@ -4,7 +4,7 @@
 angular.module('ShoppingListApp', [])
 .controller('ShoppingListAddController', ShoppingListAddController)
 .controller('ShoppingListShowController', ShoppingListShowController)
-.service('ShoppingListService', ShoppingListService);
+.service('ShoppingListService', ShoppingListService);//singleton and lazily instantiated
 
 ShoppingListAddController.$inject = ['ShoppingListService'];
 function ShoppingListAddController(ShoppingListService) {
@@ -42,6 +42,7 @@ function ShoppingListService() {
       name: itemName,
       quantity: quantity
     };
+    console.log(items);
     items.push(item);
   };
 
